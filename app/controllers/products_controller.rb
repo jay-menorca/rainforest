@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
   def index
   	@products = Product.all
+  	@products.each do |prod|
+  		prod.price_in_cents = prod.formatted_price
+  	end
   end
 
   def show
   	@product = Product.find(params[:id])
+  	@product_formatted_price = @product.formatted_price
   end
 
   def new
