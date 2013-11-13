@@ -17,7 +17,7 @@
 	<td><%= prod.description%></td>
 	<td><%= prod.price_in_cents%></td>
 	<td><%= link_to "Edit", edit_product_path(prod.id)%></td>
-	<td><%= link_to "Delete", product_path(prod.id), method: :destroy,
+	<td><%= link_to "Delete", product_path(prod.id), method: :delete,
 	data: {confirm: 'Sure?'}%></td>
 </tr>
 <%end%>
