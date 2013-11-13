@@ -1,0 +1,23 @@
+<h1>Products</h1>
+
+<%= link_to "New Product", new_product_path%>
+
+<table>
+<tr>
+	<th>Product Name</th>
+	<th>Description</th>
+	<th>Price in Cents</th>
+	<th></th>
+	<th></th>
+</tr>
+
+<%@products.each do |prod|%>
+<tr>
+	<td><a href="products/<%= prod.id%>"><%= prod.name%></a></td>
+	<td><%= prod.description%></td>
+	<td><%= prod.price_in_cents%></td>
+	<td><%= link_to "Edit", edit_product_path(prod.id)%></td>
+	<td><%= link_to "Delete", product_path(prod.id), method: :destroy,
+	data: {confirm: 'Sure?'}%></td>
+</tr>
+<%end%>
