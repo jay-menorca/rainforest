@@ -5,3 +5,13 @@
 <p><strong>Product: </strong><%= @product.name%></p>
 <p><strong>Description: </strong><%= @product.description%></p>
 <p><strong>Price: </strong><%= @product.price_in_cents%></p>
+
+<% if current_user%>
+	<h3>Reviews</h3>
+	<%= render "display_review"%>
+
+	<h4>New Review</h4>
+	<%= render "review_form"%>
+<% else %>
+	<p>Please <%= link_to "log in", new_session_path %> to add a review</p>
+<% end %>

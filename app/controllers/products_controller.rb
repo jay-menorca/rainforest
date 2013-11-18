@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :ensure_logged_in
+
   def index
   	@products = Product.all
   	@products.each do |prod|
@@ -9,6 +11,10 @@ class ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id])
   	@product_formatted_price = @product.formatted_price
+
+    if current_user
+      @review = @product.reviews.build
+    end
   end
 
   def new
